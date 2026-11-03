@@ -1,4 +1,24 @@
-<!doctype html><html><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>Desk</title></head>
-<body><h1>Desk hello</h1><p id="s">loading…</p><script>
-fetch('state.json?t='+Date.now()).then(r=>r.json()).then(j=>{document.getElementById('s').textContent='updated '+j.updated});
-</script></body></html>
+<!doctype html>
+<html lang="en"><head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Desk">
+<meta name="theme-color" content="#000000">
+<link rel="manifest" href="manifest.json">
+<link rel="apple-touch-icon" href="icons/apple-touch-icon.png">
+<link rel="stylesheet" href="app.css">
+<title>Desk</title>
+</head><body>
+<main id="home">
+  <div class="mode"><span id="mode" class="pill paper">PAPER</span></div>
+  <div id="balance" class="big">$—</div>
+  <div id="today" class="sub">—</div>
+  <canvas id="chart" height="220"></canvas>
+  <p id="status" class="sub">Loading…</p>
+</main>
+<nav class="tabs"><a class="on">Home</a><a>Agents</a><a>Activity</a><a>Account</a></nav>
+<script src="chart.js"></script>
+<script src="app.js"></script>
+</body></html>

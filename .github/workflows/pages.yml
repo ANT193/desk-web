@@ -1,0 +1,23 @@
+name: pages
+on:
+  push: {branches: [main]}
+  workflow_dispatch:
+permissions: {contents: read, pages: write, id-token: write}
+concurrency: {group: pages, cancel-in-progress: true}
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    environment: {name: github-pages}
+    steps:
+      - uses: actions/checkout@v4
+      - name: build site (data decrypted into the secret path; path is a masked secret)
+        env: {DP: "${{ secrets.DATA_PATH }}"}
+        run: |
+          mkdir -p _site
+          cp -r index.html app.css app.js chart.js sw.js manifest.json icons .nojekyll _site/
+          if [ -f data.enc ]; then
+            mkdir -p "_site/d/$DP"
+            openssl enc -d -aes-256-cbc -pbkdf2 -pass env:DP -in data.enc | tar -xz -C "_site/d/$DP"
+          fi
+      - uses: actions/upload-pages-artifact@v3
+      - uses: actions/deploy-pages@v4
