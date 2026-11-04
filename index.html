@@ -11,14 +11,15 @@
 <link rel="stylesheet" href="app.css">
 <title>Desk</title>
 </head><body>
-<main id="home">
-  <div class="mode"><span id="mode" class="pill paper">PAPER</span></div>
-  <div id="balance" class="big">$—</div>
-  <div id="today" class="sub">—</div>
-  <canvas id="chart" height="220"></canvas>
-  <p id="status" class="sub">Loading…</p>
-</main>
-<nav class="tabs"><a class="on">Home</a><a>Agents</a><a>Activity</a><a>Account</a></nav>
+<div id="err" class="err" hidden></div>
+<div id="connect" class="connect" hidden><h2>Connect this phone</h2><p>Open your private desk link once. It stays saved on this phone.</p></div>
+<main id="app"></main>
+<nav class="tabs" id="tabs">
+  <a data-tab="home"><svg viewBox="0 0 24 24"><path d="M3 11l9-7 9 7v9a1 1 0 0 1-1 1h-5v-6h-6v6H4a1 1 0 0 1-1-1z"/></svg><span>Home</span></a>
+  <a data-tab="agents"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="3"/><circle cx="16" cy="8" r="3"/><path d="M2 20c0-3 3-5 6-5s6 2 6 5M12 20c0-3 2-5 4-5s6 2 6 5"/></svg><span>Agents</span></a>
+  <a data-tab="activity"><svg viewBox="0 0 24 24"><path d="M3 12h4l3 7 4-14 3 7h4"/></svg><span>Activity</span></a>
+  <a data-tab="account"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 21c0-4 4-6 8-6s8 2 8 6"/></svg><span>Account</span></a>
+</nav>
 <script src="chart.js"></script>
 <script src="app.js"></script>
 </body></html>
